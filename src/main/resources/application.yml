@@ -1,0 +1,39 @@
+server: 
+  port: 8082
+  servlet: 
+    context-path: /pinmaologin
+#配置数据源
+spring: 
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/pinmao?serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 300
+    minIdle: 100
+    maxActive: 1000
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    #exceptionSorter: true
+    testOnReturn: false
+    poolPreparedStatements: true
+    #filter: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+    useGlobalDataSourceStat: true
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署    
+mybatis:
+  mapperLocations: classpath:com/softtron/pinmaologin/daos/*.xml
+ #启用所有端点
+management:
+    endpoints:
+        web:
+           expose: "*"
+        enabled-by-default: true    

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.softtron.pinmaologin.daos.UserDao">
+	<select id="findUserByToken" parameterType="java.lang.String" resultType="com.softtron.pinmaologin.domains.TUser">
+	    select * from t_user where token = #{key}
+	</select>
+	<select id="findUser" parameterType="java.util.Map" resultType="com.softtron.pinmaologin.domains.TUser">
+	    select * from t_user where username = #{username} and userpassword = #{password}
+	</select>
+	<insert id="insertUser" parameterType="java.util.Map">
+	  insert into t_user(username,userpassword,token)value(#{username},#{password},#{token})
+	</insert>
+	<select id="findUserByUsername" parameterType="java.lang.String" resultType="com.softtron.pinmaologin.domains.TUser">
+	    select u.*,u.userpassword as password from t_user u where username = #{username}
+	</select>
+	<select id="getRole" parameterType="java.lang.String" resultType="java.lang.String">
+	 select r.rolename from t_role r left join t_user_role t_u_r on r.roleid = t_u_r.roleid left join t_user u on t_u_r.userid = u.userid where u.username = #{username}
+	
+	</select>
+</mapper>

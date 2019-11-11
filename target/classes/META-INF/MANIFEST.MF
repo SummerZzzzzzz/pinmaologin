@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: pinmaologin
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: apple
+Implementation-Vendor-Id: com.softtron.pinmao
+Build-Jdk: 1.8.0_51
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/pinmaologin
+Created-By: Maven Integration for Eclipse
+
